@@ -1,4 +1,10 @@
+#! /bin/python3
+
 import base64
+import pyperclip
+
+encryp = ""
+go = True
 
 
 def encode(key, clear):
@@ -8,7 +14,8 @@ def encode(key, clear):
         enc_c = (ord(clear[i]) + ord(key_c)) % 256
         enc.append(enc_c)
     encryp = (base64.urlsafe_b64encode(bytes(enc)))
-    print(base64.urlsafe_b64encode(bytes(enc)))
+    print("Encoded String:", encryp)
+    pyperclip.copy(str(encryp))
 
 
 def decode(key, enc):
@@ -18,11 +25,8 @@ def decode(key, enc):
         key_c = key[i % len(key)]
         dec_c = chr((256 + enc[i] - ord(key_c)) % 256)
         dec.append(dec_c)
-    print("".join(dec))
+    print("Decrypted String:", "".join(dec))
 
-
-encryp = ""
-go = True
 
 print("""
 ▄█▄    █▄▄▄▄ ▀▄    ▄ █ ▄▄     ▄▄▄▄▀ ████▄
@@ -32,7 +36,7 @@ print("""
 ▀███▀    █    ▄▀      █      ▀
         ▀              ▀
       """)
-print("(Encode), (Decode), (Code) or (Help)?")
+print("(Encode), (Decode), (Code), (Help) or (Exit)?")
 
 while go:
     kind = input(">> ").lower()
@@ -41,7 +45,7 @@ while go:
         clear = input("String: ")
         key = input("Password: ")
         encode(key, clear)
-        print("For decryption to work, only copy the text in quotes.\n")
+        print("For decryption to work, only use the text in quotes.\n")
 
     elif kind == 'decode':
         print("Only input the text inside the quotes.")
@@ -61,10 +65,17 @@ while go:
         print("'Encode' will encode a String with a Key into Base64.")
         print("'Decode' will decode a String from Base64. Have your Key on hand.")
         print("'Code' will show the most recently generated code again.")
+        print("'Exit' will exit Crypto.")
         print("'Help' shows this help.\n")
 
     elif kind == '':
         pass
+
+    elif kind == 'exit':
+        break
+
+    elif go is False:
+        exit()
 
     else:
         print("Invalid Input.\n")
