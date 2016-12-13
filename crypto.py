@@ -1,5 +1,3 @@
-#! /bin/python3
-
 import base64
 import pyperclip
 
@@ -45,7 +43,8 @@ while go:
         clear = input("String: ")
         key = input("Password: ")
         encode(key, clear)
-        print("For decryption to work, only use the text in quotes.\n")
+        print("The encoded text has been copied to your clipboard.")
+        print("For decoding to work, only use the text in quotes.\n")
 
     elif kind == 'decode':
         print("Only input the text inside the quotes.")
