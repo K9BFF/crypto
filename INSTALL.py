@@ -1,8 +1,7 @@
 import os
 
-os.system("pip install pyperclip")
-
 if os.name == 'posix':
+    os.system("sudo pip install pyperclip")
     print("A linux installation was detected. Would you like to install crypto to the /bin folder so")
     print("it can be run from the terminal? (y/n)")
     ask = input(">> ").lower()
@@ -20,5 +19,6 @@ if os.name == 'posix':
         input("Press enter to finish.")
 
 else:
+    os.system("pip install pyperclip")
     print("All dependencies were installed.")
     input("Press enter to finish.")
