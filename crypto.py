@@ -1,4 +1,5 @@
 import base64
+import pyperclip
 
 encryp = ""
 go = True
@@ -12,6 +13,7 @@ def encode(key, clear):
         enc.append(enc_c)
     encryp = (base64.urlsafe_b64encode(bytes(enc)))
     print("Encoded String:", encryp)
+    pyperclip.copy(str(encryp))
 
 
 def decode(key, enc):
@@ -41,6 +43,7 @@ while go:
         clear = input("String: ")
         key = input("Password: ")
         encode(key, clear)
+        print("The encoded text has been copied to your clipboard.")
         print("For decoding to work, only use the text in quotes.\n")
 
     elif kind == 'decode':
