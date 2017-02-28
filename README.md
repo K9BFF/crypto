@@ -1,5 +1,2 @@
-# crypto
-Cryptography for everyone.
-
-##Requirements
-pyperclip
+# moved
+https://github.com/DiscreteLab/DCrypt
